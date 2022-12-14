@@ -10,12 +10,16 @@ for (let i = 0; i < len; i++) {
         nowLen ++;
         i++;
     }
-    let right = i + 1 // 获取右侧开始遍历的指针
+    //  获取右侧开始遍历的指针
+    let right = i + 1;
+    //  从连续字符两端开始像两侧扩展，直到越界或者不一致
+    //  一致的直接累计到当前长度中，修改左右指针
     while(s[left] === s[right] && s[left]!== undefined) {
         nowLen += 2;
         left--;
         right++;
     }
+    //  判断与之前最大的对比，更新当前最大回文串的起始索引
     if (nowLen > maxLen) {
         maxLen = nowLen;
         start = left + 1;
@@ -24,3 +28,5 @@ for (let i = 0; i < len; i++) {
 
     return s.slice(start, start + maxLen);
 }
+
+console.log(longstPalindrome('babad'))
