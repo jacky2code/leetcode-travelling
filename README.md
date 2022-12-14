@@ -1,5 +1,9 @@
 # LeetCode Travelling
 
+https://github.com/jacky2code/leetcode-travelling
+
+https://gitee.com/jacky2code/leetcode-travelling
+
 # 001 Two Sum
 
 
