@@ -1,6 +1,6 @@
 # LeetCode Travelling
 
-# 001
+# 001 Two Sum
 
 
 
@@ -24,7 +24,7 @@ You may assume the two numbers do not contain any leading zero, except the numbe
   模拟相加操作，将个位数追加到新链表上，将十位数留到下一位去相加。
   如下图:[9, 9, 9]与[9, 9, 9, 9]相加过程。
 
-  ![002](https://pic.leetcode-cn.com/1624842431-IgMVyB-image.png)
+  ![002](https://markdown-res.oss-cn-hangzhou.aliyuncs.com/mdImgs/2022/12/14/20221214151629.png)
 
 ```typescript
 function GKaddTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null { 
@@ -97,7 +97,7 @@ Each time you can either climb 1 or 2 steps. In how many distinct ways can you c
 
   可以用「滚动数组思想」
 
-![滚动数组](https://assets.leetcode-cn.com/solution-static/70/70_fig1.gif)
+![滚动数组](https://markdown-res.oss-cn-hangzhou.aliyuncs.com/mdImgs/2022/12/14/20221214151651.gif)
 
 ```typescript
 function climbStairs(n: number): number {
