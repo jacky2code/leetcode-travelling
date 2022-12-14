@@ -23,10 +23,10 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 
 
 1. 解题思路
-  新建一个空链表
-  遍历被相加的两个链表，如果一个链表先结束结束，后面位数都补0。
-  模拟相加操作，将个位数追加到新链表上，将十位数留到下一位去相加。
-  如下图:[9, 9, 9]与[9, 9, 9, 9]相加过程。
+    新建一个空链表
+    遍历被相加的两个链表，如果一个链表先结束结束，后面位数都补0。
+    模拟相加操作，将个位数追加到新链表上，将十位数留到下一位去相加。
+    如下图:[9, 9, 9]与[9, 9, 9, 9]相加过程。
 
   ![002](https://markdown-res.oss-cn-hangzhou.aliyuncs.com/mdImgs/2022/12/14/20221214151629.png)
 
@@ -60,9 +60,61 @@ function GKaddTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | n
 # 005 最长回文子串
 给你一个字符串 s，找到 s 中最长的回文子串。
 
-- 示例1:
-输入：s = "babad"
-输出："bab"
+- **示例1:**
+
+  ```
+  输入：s = "babad"
+  输出："bab"
+  ```
+
+- **示例 2：**
+
+  ```
+  输入：s = "cbbd"
+  输出："bb"
+  ```
+
+  ```typescript
+  function longstPalindrome(s: string): string {
+      // 当前最大回文串的长度
+      let maxLen: number = 0;
+      // 当前最大回文串的起始索引
+      let start: number = -1;
+      const len = s.length;
+      for (let i = 0; i < len; i++) {
+          // 当前回文串的长度
+          let nowLen: number = 1;
+          // 左侧开始遍历的指针
+          let left: number = i - 1;
+          // 如果当前字符后边的字符一致，当前长度 + 1，
+          // s遍历指针向后推
+          while (s[i + 1] === s[i]) {
+              nowLen++;
+              i++;
+          }
+          // 获取右侧开始遍历的指针
+          let right = i + 1;
+          // 从连续字符两端开始像两侧扩展，直到越界或者不一致
+          // 一致的直接累计到当前长度中，修改左右指针
+          while (s[left] === s[right] && s[left] !== undefined) {
+              nowLen += 2;
+              left--;
+              right++;
+          }
+          // 判断与之前最大的对比，更新当前最大回文串的起始索引
+          if (nowLen > maxLen) {
+              maxLen = nowLen;
+              start = left + 1;
+          }
+      }
+  
+      return s.slice(start, start + maxLen);
+  }
+  
+  console.log(longstPalindrome('babad'))
+  ```
+
+  
 
 
 
