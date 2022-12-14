@@ -53,6 +53,12 @@ function GKaddTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | n
     return dmy.next;
 }
 ```
+# 005 最长回文子串
+给你一个字符串 s，找到 s 中最长的回文子串。
+
+- 示例1:
+输入：s = "babad"
+输出："bab"
 
 
 
