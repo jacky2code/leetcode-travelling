@@ -59,4 +59,30 @@ function GKlengthOfLongestSubstring(s: string): number {
     return maxLen;
 }
 
+function lengthOfLongestSubstringCommit(s: string): number {
+    if(s.length <= 0) return 0;
+    // 定义左边下边，右边下标
+    let right: number = 0, left: number = 0, lenMax: number = 0;
+    // 定义一个map，用来存储字符和下标
+    let map: Map<string, number> = new Map();
+    // 向右循环右下标
+    while(right < s.length) {
+        // 取出当前下标的字符
+        let letter: string = s[right];
+        // 如果map中包含这个字符
+        if(map.has(letter)) {
+            // 做下标就移动到该字符的下一个下标
+            left = Math.max(left, <number>map.get(letter) + 1)
+        }
+        // 最长字符就是 右下标 - 左下标 + 1
+        lenMax = Math.max(lenMax, right - left + 1);
+        // 保存字符到map中
+        map.set(s[right], right);
+        // 向右移动坐标
+        right++;
+    }
+    
+    return lenMax;
+};
+
 console.log(GKlengthOfLongestSubstring('abcabcabcdabcde'))
