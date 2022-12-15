@@ -7,29 +7,27 @@
  * @TODO: 
  */
 
+/*
+ * 思路：
+ * 从中间向两端比对
+ */
 function isPalindrome(x: number): boolean {
     if (x < 0) return false;
     const str: string = x.toString();
-    console.log('str ====== ', str);
     const len: number = str.length;
-    console.log('len ====== ',len);
     const flag: boolean = len % 2 ? true : false;
-    console.log('flag ====== ', flag);
     if(len === 1) return true;
     let left: number = 0;
     let right: number = 0;
+    
     if(flag) {
-        console.log('comming true ======');
          left = Math.floor(len / 2) -1;
          right = Math.ceil(len / 2);
     } else {
-        console.log('comming false ======');
         left = (len / 2) -1;
         right = len / 2;
     }
     while(right <= len -1) {
-        console.log('leftStr ====== ', str[left]);
-        console.log('rightStr ====== ', str[right]);
              if(str[left] !== str[right]) {
                  return false;
              }
@@ -39,13 +37,19 @@ function isPalindrome(x: number): boolean {
     return true;
 };
 
+/*
+ * 思路：
+ * 从两端向中间比对
+ */
 function GKisPalindrome(x: number): boolean {
     if(x < 10 && x >=0) return true;
     if(x < 0) return false;
     let str: string = x.toString();
     let left: number = 0;
     let right: number = str.length -1;
+    // 比对到 len/2 - 1 的中间位置
     while(right>=str.length / 2 -1 && right<= str.length - 1) {
+        // 如果有任何一对字符不相同，返回 false
         if(str[left] !== str[right]) {
             return false;
         }
