@@ -4,11 +4,11 @@ https://github.com/jacky2code/leetcode-travelling
 
 https://gitee.com/jacky2code/leetcode-travelling
 
-# 001 Two Sum
+## 001 Two Sum
 
 
 
-# 002 [Add Two Numbers](https://leetcode.cn/problems/add-two-numbers/)
+## 002 [Add Two Numbers](https://leetcode.cn/problems/add-two-numbers/)
 
 You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
 
@@ -57,7 +57,8 @@ function GKaddTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | n
     return dmy.next;
 }
 ```
-# 005 最长回文子串
+## 005 最长回文子串
+
 给你一个字符串 s，找到 s 中最长的回文子串。
 
 - **示例1:**
@@ -114,13 +115,89 @@ function GKaddTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | n
   console.log(longstPalindrome('babad'))
   ```
 
-  
+## 006 Z 字形变换
+
+- 将一个给定字符串 s 根据给定的行数 numRows ，以从上往下、从左到右进行 Z 字形排列。比如输入字符串为 "PAYPALISHIRING" 行数为 3 时，排列如下：
+
+  ```
+  P   A   H   N
+  A P L S I I G
+  Y   I   R
+  ```
+
+- 思路
+
+  * 行数是固定的
+   * 写入顺序是固定的，下上下上下上。。。。
+   * 可不可以遍历s的同时，控制上下顺序，写入对应的行，最后合并
+   * 当字符串长度没有行数多时，为一列，或者行数为1的情况，不需要计算
+
+```typescript
+/*
+ * @Author: GKing
+ * @Date: 2022-12-15 08:46:54
+ * @LastEditors: GKing
+ * @LastEditTime: 2022-12-15 10:55:47
+ * @Description: 
+ * Z 字形变换
+ * 将一个给定字符串 s 根据给定的行数 numRows ，以从上往下、从左到右进行 Z 字形排列。
+ * 比如输入字符串为 "PAYPALISHIRING" 行数为 3 时，排列如下：
+ * P   A   H   N
+ * A P L S I I G
+ * Y   I   R
+ * 
+ * @TODO: 
+ * 实现这个将字符串进行指定行数变换的函数：
+ * string convert(string s, int numRows);
+ * 
+ * 1.行数是固定的
+ * 2.写入顺序是固定的，下上下上下上。。。。
+ * 3.可不可以遍历s的同时，控制上下顺序，写入对应的行，最后合并
+ * 4.当字符串长度没有行数多时，为一列，或者行数为1的情况，不需要计算
+ * 
+ */
+function GKConvert(s: string, numRows: number): string {
+    if (s.length <= numRows || numRows === 1) return s;
+    // 新建数组，个数为行数
+    const arr: Array<string> = new Array(numRows).fill('');
+    // 当前行数0
+    let num: number = 0;
+    // 初始填充顺序，true：向下移动；false：向上移动
+    let plus: boolean = true;
+    for (let i: number = 0; i < s.length; i++) {
+        // 按行号填充字符
+        arr[num] += s[i];
+
+        // 向下，行号 +1
+        if (plus) {
+            num++;
+        } else {
+            // 向上，行号-1
+            num--;
+        }
+
+        // 行号为0，到顶后向下，plus=true
+        if (num === 0) {
+            plus = true;
+        }
+        
+        if (num === numRows -1) {
+            plus = false;
+        }
+    }
+    return arr.join('');
+}
+
+console.time('time');
+console.log(GKConvert('PAYPALISHIRING', 3));
+console.timeEnd('time');
+```
 
 
 
 
 
-# 070 [Climbing Stairs](https://leetcode.cn/problems/climbing-stairs/)
+## 070 [Climbing Stairs](https://leetcode.cn/problems/climbing-stairs/)
 
 You are climbing a staircase. It takes n steps to reach the top.
 
