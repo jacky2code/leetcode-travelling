@@ -252,8 +252,18 @@ function GKReverse(x: number): number {
 }
 console.log(reverse(12345678));
 ```
+## 008 字符串转换整数（atoi）
+实现一个 myAtoi 函数，使其能将字符串转换成一个 32 位有符号整数（类似C/C++ 中的 atoi 函数）。
 
+## 009 回文数
+给你一个整数 x，如果 x 是一个回文数，返回true；否则，返回false。
+回文数是指正序和倒序读都是一样的整数。
 
+- 示例1
+```
+输入：x = 121
+输出：true.      
+```
 
 
 
