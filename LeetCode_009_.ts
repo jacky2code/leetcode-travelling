@@ -1,3 +1,11 @@
+/*
+ * @Author: GKing
+ * @Date: 2022-12-15 18:58:14
+ * @LastEditors: GKing
+ * @LastEditTime: 2022-12-15 19:03:19
+ * @Description: 判断回文数
+ * @TODO: 
+ */
 
 function isPalindrome(x: number): boolean {
     if (x < 0) return false;
@@ -36,8 +44,14 @@ function GKisPalindrome(x: number): boolean {
     if(x < 0) return false;
     let str: string = x.toString();
     let left: number = 0;
-    let right: number = str.len -1;
-    while(le)
+    let right: number = str.length -1;
+    while(right>=str.length / 2 -1 && right<= str.length - 1) {
+        if(str[left] !== str[right]) {
+            return false;
+        }
+        left++;
+        right--;
+    }
 
     return true;
 }

@@ -265,6 +265,28 @@ console.log(reverse(12345678));
 输出：true.      
 ```
 
+- 思路
+
+  双指针从前后两端往中间比较，如果比较到len/2-1个位置都相同，则返回 true；中途有任何不相同，则返回 false；
+
+```typescript
+function GKisPalindrome(x: number): boolean {
+    if(x < 10 && x >=0) return true;
+    if(x < 0) return false;
+    let str: string = x.toString();
+    let left: number = 0;
+    let right: number = str.length -1;
+    while(right>=str.length / 2 -1 && right<= str.length - 1) {
+        if(str[left] !== str[right]) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+    return true;
+}
+```
+
 
 
 ## 070 [Climbing Stairs](https://leetcode.cn/problems/climbing-stairs/)
