@@ -50,9 +50,7 @@ function GKaddTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | n
         curr = curr.next;
 
         if(l1) l1 = l1.next;
-        if(l2) l2 = l2.next;
-    }
-    // 链表位数循环完以后，addOne还是1，链表增加位数
+        if(l2) l2 = l2.next;    // 链表位数循环完以后，addOne还是1，链表增加位数
     if(addOne) curr.next = new ListNode(addOne);
     return dmy.next;
 }
@@ -287,7 +285,7 @@ function GKisPalindrome(x: number): boolean {
 }
 ```
 
-## 盛最多水的容器
+## 011 盛最多水的容器
 
 给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。
 
