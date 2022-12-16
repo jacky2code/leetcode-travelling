@@ -2,7 +2,7 @@
  * @Author: GKing
  * @Date: 2022-12-14 15:24:32
  * @LastEditors: GKing
- * @LastEditTime: 2022-12-14 16:46:29
+ * @LastEditTime: 2022-12-16 10:16:32
  * @Description: 
  * 
  * 给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
@@ -85,4 +85,26 @@ function lengthOfLongestSubstringCommit(s: string): number {
     return lenMax;
 };
 
-console.log(GKlengthOfLongestSubstring('abcabcabcdabcde'))
+function lengthOfLongestSubstringTest(s: string): number {
+    const len: number = s.length;
+    if(len <= 0) return 0;
+    let left: number = 0, right: number = 0, lenMax: number = 0;
+    let map: Map<string, number> = new Map();
+    while(right < len) {
+        let str: string = s.charAt(right);
+        if(map.has(str)) {
+            left = Math.max((<number>map.get(str) + 1), left);
+        }
+        lenMax = Math.max(lenMax, right - left + 1)
+
+        map.set(str, right);
+        right++;
+    }
+
+    return lenMax;
+}
+
+
+console.time('time');
+console.log(lengthOfLongestSubstringTest('abcabcabcdabcde'))
+console.timeEnd('time');
